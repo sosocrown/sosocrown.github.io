@@ -1480,7 +1480,7 @@ table td {
   vertical-align: middle;
 }
 *::selection {
-  background: #ff4081;
+  background: #b3e5fc;
   color: #f7f7f7;
 }
 button {
