@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2025/07/15/K8S-/"/>
+      <url>/2025/07/15/K8S-/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>K8S-day1-初始化安装k8s集群的环境</title>
+      <link href="/2025/07/15/K8S-day1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4%E7%9A%84%E7%8E%AF%E5%A2%83/"/>
+      <url>/2025/07/15/K8S-day1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4%E7%9A%84%E7%8E%AF%E5%A2%83/</url>
+      
+        <content type="html"><![CDATA[<h2 id="用户与组管理"><a href="#用户与组管理" class="headerlink" title="用户与组管理"></a>用户与组管理</h2><h3 id="useradd创建用户"><a href="#useradd创建用户" class="headerlink" title="useradd创建用户"></a>useradd创建用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">常用选项：</span><br><span class="line">-u 指定用户UID</span><br><span class="line">-d 指定用户家目录</span><br><span class="line">-c --comment用户描述信息</span><br><span class="line">-g 指定用户gid</span><br><span class="line">-G 指定用户附加组（次要组）</span><br><span class="line">-s --shell指定用户的解释器程序   </span><br><span class="line">⽆权访问系统上的交互式shell：/sbin/noloogin   /bin/false</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建用户指定用户UID、描述信息、附加组</span></span><br><span class="line">[root@localhost ~]# useradd -u 1600 -c yunwei -G <span class="built_in">test</span> xiaozhang</span><br><span class="line">[root@localhost ~]# <span class="built_in">id</span> xiaozhang</span><br><span class="line">uid=1600(xiaozhang) gid=1600(xiaozhang) 组=1600(xiaozhang),1401(<span class="built_in">test</span>)</span><br></pre></td></tr></table></figure><h3 id="groupadd创建组"><a href="#groupadd创建组" class="headerlink" title="groupadd创建组"></a>groupadd创建组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建组</span></span><br><span class="line"> groupadd -g GID   <span class="comment">#指定组的GID</span></span><br><span class="line">[root@localhost ~]# groupadd -g 1555 student</span><br></pre></td></tr></table></figure><h3 id="chgrp改变文件或目录所属组"><a href="#chgrp改变文件或目录所属组" class="headerlink" title="chgrp改变文件或目录所属组"></a>chgrp改变文件或目录所属组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看文件或目录所属组</span></span><br><span class="line"><span class="built_in">ls</span> -l</span><br><span class="line"></span><br><span class="line"><span class="built_in">chgrp</span> [选项] [所属组] 文件/目录</span><br><span class="line">--reference=RFILE  使用参考文件的所属组</span><br><span class="line">-R  递归的更改目录下的所有目录以及文件</span><br><span class="line"></span><br><span class="line"><span class="built_in">chgrp</span> group1 /etc/niki</span><br><span class="line"></span><br><span class="line">sgid：给目录设置了sgid权限，在该目录下创建的文件或者目录的**属组**都与该目录一致</span><br><span class="line"></span><br><span class="line">授权格式：</span><br><span class="line"><span class="built_in">chmod</span> g+s 文件名称</span><br><span class="line">撤销格式：</span><br><span class="line"><span class="built_in">chmod</span> g-s 文件名称</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="chown归属关系管理"><a href="#chown归属关系管理" class="headerlink" title="chown归属关系管理"></a>chown归属关系管理</h3><p>chown（英文全拼：change owner）用于设置文件的所有者和所属组关系</p><ul><li>命令格式：<ul><li>chown [-选项] 所有者:所属组 文档</li><li>chown [-选项] 所有者 文档</li><li>chown [-选项] :所属组 文档</li></ul></li><li>常用选项:<ul><li><code>R</code> 递归地改变指定目录及其子目录和文件的所有者</li></ul></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改文件所有者与所属组为lisi</span></span><br><span class="line">[root@localhost ~]# <span class="built_in">chown</span> lisi:lisi /hello.txt </span><br></pre></td></tr></table></figure><h3 id="id查看信息"><a href="#id查看信息" class="headerlink" title="id查看信息"></a>id查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# <span class="built_in">id</span> user1</span><br><span class="line">uid=1001(user1) gid=1001(user1) 组=1001(user1)</span><br></pre></td></tr></table></figure><h3 id="passwd修改密码"><a href="#passwd修改密码" class="headerlink" title="passwd修改密码"></a>passwd修改密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置用户密码</span></span><br><span class="line">[root@localhost ~]# passwd user1</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 密码 |passwd --stdin user1</span><br></pre></td></tr></table></figure><h3 id="etc-passwd用户信息文件"><a href="#etc-passwd用户信息文件" class="headerlink" title="&#x2F;etc&#x2F;passwd用户信息文件"></a>&#x2F;etc&#x2F;passwd用户信息文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">**[root@localhost ~]# vim /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line"><span class="comment">#每个字段含义解释：用户名:密码占位符:UID:基本组GID:用户描述信息:家目录:解释器程序</span></span><br><span class="line">UID：0 超级用户</span><br><span class="line">UID：1-999 系统伪用户，不能登录系统</span><br><span class="line">UID：1000-65535 普通用户，管理员创建的用户**</span><br></pre></td></tr></table></figure><h3 id="wheel用户组"><a href="#wheel用户组" class="headerlink" title="wheel用户组"></a>wheel用户组</h3><p><a href="https://www.cnblogs.com/linuxshare/p/18609179">linux中的wheel用户 - 爱折腾的大臭臭 - 博客园</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> k8s </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> kubenates </tag>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>a glass of Baileys</title>
       <link href="/2025/05/06/a%20glass%20of%20Baileys/"/>
       <url>/2025/05/06/a%20glass%20of%20Baileys/</url>
@@ -132,9 +174,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -182,6 +224,8 @@
       <categories>
           
           <category> lifelong learning </category>
+          
+          <category> 技术 </category>
           
           <category> linux </category>
           
@@ -250,13 +294,15 @@
     
     <entry>
       <title>linux用户与组管理</title>
-      <link href="/2024/07/20/%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84%E7%AE%A1%E7%90%86/"/>
-      <url>/2024/07/20/%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84%E7%AE%A1%E7%90%86/</url>
+      <link href="/2024/07/20/%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84%E7%AE%A1%E7%90%86%201/"/>
+      <url>/2024/07/20/%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84%E7%AE%A1%E7%90%86%201/</url>
       
         <content type="html"><![CDATA[<h2 id="用户与组管理"><a href="#用户与组管理" class="headerlink" title="用户与组管理"></a>用户与组管理</h2><h3 id="useradd创建用户"><a href="#useradd创建用户" class="headerlink" title="useradd创建用户"></a>useradd创建用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">常用选项：</span><br><span class="line">-u 指定用户UID</span><br><span class="line">-d 指定用户家目录</span><br><span class="line">-c --comment用户描述信息</span><br><span class="line">-g 指定用户gid</span><br><span class="line">-G 指定用户附加组（次要组）</span><br><span class="line">-s --shell指定用户的解释器程序   </span><br><span class="line">⽆权访问系统上的交互式shell：/sbin/noloogin   /bin/false</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建用户指定用户UID、描述信息、附加组</span></span><br><span class="line">[root@localhost ~]# useradd -u 1600 -c yunwei -G <span class="built_in">test</span> xiaozhang</span><br><span class="line">[root@localhost ~]# <span class="built_in">id</span> xiaozhang</span><br><span class="line">uid=1600(xiaozhang) gid=1600(xiaozhang) 组=1600(xiaozhang),1401(<span class="built_in">test</span>)</span><br></pre></td></tr></table></figure><h3 id="groupadd创建组"><a href="#groupadd创建组" class="headerlink" title="groupadd创建组"></a>groupadd创建组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建组</span></span><br><span class="line"> groupadd -g GID   <span class="comment">#指定组的GID</span></span><br><span class="line">[root@localhost ~]# groupadd -g 1555 student</span><br></pre></td></tr></table></figure><h3 id="chgrp改变文件或目录所属组"><a href="#chgrp改变文件或目录所属组" class="headerlink" title="chgrp改变文件或目录所属组"></a>chgrp改变文件或目录所属组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看文件或目录所属组</span></span><br><span class="line"><span class="built_in">ls</span> -l</span><br><span class="line"></span><br><span class="line"><span class="built_in">chgrp</span> [选项] [所属组] 文件/目录</span><br><span class="line">--reference=RFILE  使用参考文件的所属组</span><br><span class="line">-R  递归的更改目录下的所有目录以及文件</span><br><span class="line"></span><br><span class="line"><span class="built_in">chgrp</span> group1 /etc/niki</span><br><span class="line"></span><br><span class="line">sgid：给目录设置了sgid权限，在该目录下创建的文件或者目录的**属组**都与该目录一致</span><br><span class="line"></span><br><span class="line">授权格式：</span><br><span class="line"><span class="built_in">chmod</span> g+s 文件名称</span><br><span class="line">撤销格式：</span><br><span class="line"><span class="built_in">chmod</span> g-s 文件名称</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="chown归属关系管理"><a href="#chown归属关系管理" class="headerlink" title="chown归属关系管理"></a>chown归属关系管理</h3><p>chown（英文全拼：change owner）用于设置文件的所有者和所属组关系</p><ul><li>命令格式：<ul><li>chown [-选项] 所有者:所属组 文档</li><li>chown [-选项] 所有者 文档</li><li>chown [-选项] :所属组 文档</li></ul></li><li>常用选项:<ul><li><code>R</code> 递归地改变指定目录及其子目录和文件的所有者</li></ul></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改文件所有者与所属组为lisi</span></span><br><span class="line">[root@localhost ~]# <span class="built_in">chown</span> lisi:lisi /hello.txt </span><br></pre></td></tr></table></figure><h3 id="id查看信息"><a href="#id查看信息" class="headerlink" title="id查看信息"></a>id查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# <span class="built_in">id</span> user1</span><br><span class="line">uid=1001(user1) gid=1001(user1) 组=1001(user1)</span><br></pre></td></tr></table></figure><h3 id="passwd修改密码"><a href="#passwd修改密码" class="headerlink" title="passwd修改密码"></a>passwd修改密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置用户密码</span></span><br><span class="line">[root@localhost ~]# passwd user1</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 密码 |passwd --stdin user1</span><br></pre></td></tr></table></figure><h3 id="etc-passwd用户信息文件"><a href="#etc-passwd用户信息文件" class="headerlink" title="&#x2F;etc&#x2F;passwd用户信息文件"></a>&#x2F;etc&#x2F;passwd用户信息文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">**[root@localhost ~]# vim /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line"><span class="comment">#每个字段含义解释：用户名:密码占位符:UID:基本组GID:用户描述信息:家目录:解释器程序</span></span><br><span class="line">UID：0 超级用户</span><br><span class="line">UID：1-999 系统伪用户，不能登录系统</span><br><span class="line">UID：1000-65535 普通用户，管理员创建的用户**</span><br></pre></td></tr></table></figure><h3 id="wheel用户组"><a href="#wheel用户组" class="headerlink" title="wheel用户组"></a>wheel用户组</h3><p><a href="https://www.cnblogs.com/linuxshare/p/18609179">linux中的wheel用户 - 爱折腾的大臭臭 - 博客园</a></p>]]></content>
       
       
       <categories>
+          
+          <category> lifelong learning </category>
           
           <category> 技术 </category>
           
@@ -294,9 +340,9 @@
       
         <tags>
             
-            <tag> 容器 </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> 容器 </tag>
             
         </tags>
       
@@ -654,6 +700,8 @@
       
       
       <categories>
+          
+          <category> lifelong learning </category>
           
           <category> 技术 </category>
           
