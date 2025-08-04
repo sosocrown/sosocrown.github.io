@@ -1,0 +1,425 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>AWS-SAA认证全攻略 | The Fountainhead</title><meta name="author" content="niki,zn40489@gmail.com"><meta name="copyright" content="niki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#FFEB3B"><meta name="description" content="此篇分享源自偶然在WomenStack 百栈百胜社群中的一次分享，公众号文章链接附下，欢迎大家关注微信公众号WomenStack 百栈百胜https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;Mzk4ODQ2NzkxOQ&#x3D;&#x3D;&amp;mid&#x3D;2247485911&amp;idx&#x3D;1&amp;sn&#x3D;82f2435d9600c3b4be6aa200df2c1d7a&amp;chksm&#x3D;c4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS-SAA认证全攻略">
+<meta property="og:url" content="https://sosocrown.github.io/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/index.html">
+<meta property="og:site_name" content="The Fountainhead">
+<meta property="og:description" content="此篇分享源自偶然在WomenStack 百栈百胜社群中的一次分享，公众号文章链接附下，欢迎大家关注微信公众号WomenStack 百栈百胜https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;Mzk4ODQ2NzkxOQ&#x3D;&#x3D;&amp;mid&#x3D;2247485911&amp;idx&#x3D;1&amp;sn&#x3D;82f2435d9600c3b4be6aa200df2c1d7a&amp;chksm&#x3D;c4">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sosocrown.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-07-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-01T10:24:15.305Z">
+<meta property="article:author" content="niki">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="云原生">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sosocrown.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AWS-SAA认证全攻略",
+  "url": "https://sosocrown.github.io/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/",
+  "image": "https://sosocrown.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-07-14T16:00:00.000Z",
+  "dateModified": "2025-08-01T10:24:15.305Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "niki",
+      "url": "https://sosocrown.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sosocrown.github.io/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#212121')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFEB3B')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AWS-SAA认证全攻略',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/mycss.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="The Fountainhead" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #efefef;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/3.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">The Fountainhead</span></a><a class="nav-page-title" href="/"><span class="site-name">AWS-SAA认证全攻略</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">AWS-SAA认证全攻略</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-01T10:24:15.305Z" title="更新于 2025-08-01 18:24:15">2025-08-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/lifelong-learning/">lifelong learning</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/lifelong-learning/%E6%8A%80%E6%9C%AF/">技术</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/lifelong-learning/%E6%8A%80%E6%9C%AF/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>此篇分享源自偶然在WomenStack 百栈百胜社群中的一次分享，公众号文章链接附下，欢迎大家关注微信公众号WomenStack 百栈百胜<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzk4ODQ2NzkxOQ==&mid=2247485911&idx=1&sn=82f2435d9600c3b4be6aa200df2c1d7a&chksm=c4d61b2fafa6e6642660c64001f4dd53009cd7a998e79f94e9ff68accda2572c47d9ea51f575&mpshare=1&scene=1&srcid=0729ZToFy994c5rHOusSlaqM&sharer_shareinfo=8993ec30eec70b4e1b042681f1ed1f18&sharer_shareinfo_first=cc8c545add2d44d6f5095cb1a0818068#rd">https://mp.weixin.qq.com/s?__biz=Mzk4ODQ2NzkxOQ==&amp;mid=2247485911&amp;idx=1&amp;sn=82f2435d9600c3b4be6aa200df2c1d7a&amp;chksm=c4d61b2fafa6e6642660c64001f4dd53009cd7a998e79f94e9ff68accda2572c47d9ea51f575&amp;mpshare=1&amp;scene=1&amp;srcid=0729ZToFy994c5rHOusSlaqM&amp;sharer_shareinfo=8993ec30eec70b4e1b042681f1ed1f18&amp;sharer_shareinfo_first=cc8c545add2d44d6f5095cb1a0818068#rd</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我学云计算的第一步，是靠考下 <strong>AWS Certified Solutions Architect – Associate（简称 SAA</strong><strong>）</strong> 完成的。</p>
+<p>AWS（Amazon Web Services）是亚马逊（Amazon）旗下的云计算平台，与 Microsoft Azure、Google Cloud Platform（GCP）并称全球三大云服务商。 国内则有阿里巴巴、腾讯、华为等公司提供各自的云服务，分别是阿里云、腾讯云和华为云。</p>
+<p>虽然各家厂商均推出自有认证体系，但AWS的很多架构与服务都是云计算的行业标准。即便考完很久，大部分知识都忘记了，但现在无论使用哪家厂商的云服务，我都能将其对应到 AWS 的服务。</p>
+<p>这并不意味着考试万能，对我的职业路径也没有巨大增益，但在学习过程中，通过将零散的服务组件系统性地整合为完整的架构体系，重新审视并理解传统IT架构的本质特征与运行逻辑，这些对我而言是非常宝贵的经历。</p>
+<p>我学习到的，<strong>不只是“该用哪个服务”，而是“如何思考”。<strong>它帮我建立了</strong>云原生****的思维方式</strong>，让我在后续的实际项目、技术决策中，能更清晰地分析问题、设计架构。</p>
+<p>AWS提供非常多的认证，可以通过官网查看。大致分为入门、助理、专业、专项。详细认证信息可通过文末链接[2]查看。</p>
+<p>作为初学者，应该选择<strong>入门级</strong>的Cloud Practitioner还是<strong>助理级</strong>的Solutions Architect Associate呢？</p>
+<p>Cloud Practitioner（云计算从业者）更加关注云服务本身，适合没有技术背景的人员，需要知道有哪些产品、能做什么、大概怎么用即可，无需深究架构原理。</p>
+<p>Solutions Architect Associate（解决方案架构师助理级）适合开发者、运维工程师、系统工程师，更加侧重云服务在架构中如何发挥作用，更要掌握它们如何组合成高可用、可扩展、成本优化的整体解决方案。</p>
+<p>我本身是计算机专业背景，玩过虚拟机、搭过服务，对 Linux 、计算机网络不陌生，但不了解云原生云计算，当时的职业规划也更倾向于建立系统的云架构设计能力，所以选择SAA而非CP（Cloud Practitioner）。当然，国内的云认证更方便，如阿里云的ACP（阿里云云计算高级工程师Alibaba Cloud Certified Professional - Cloud Computing），资源更加好获取，语言也没有门槛，怎么选看个人倾向。</p>
+<p>本文主要分享AWS-SAA（解决方案架构师助理级）的认证经验。</p>
+<h1 id="个人情况"><a href="#个人情况" class="headerlink" title="个人情况"></a>个人情况</h1><p>背景：计算机专业，对云服务完全不了解</p>
+<p>备考时长时间：48天左右</p>
+<ul>
+<li>学习：35天，每天有效学习时长3~5小时（其中可能有1-3天去玩了）</li>
+<li>刷题：13天</li>
+</ul>
+<p>刷题来源：ExamTopics</p>
+<h1 id="关于-AWS-SAA-考试："><a href="#关于-AWS-SAA-考试：" class="headerlink" title="关于 AWS SAA 考试："></a>关于 AWS SAA 考试：</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>SAA-C03 是 <strong>AWS SAA</strong> 认证考试的最新版本代码，于 2022 年 8 月 30 日正式启用，替代旧版 SAA-C02。在获取资料、学习、刷题过程中请认准最新代码。</li>
+<li>认证常见问题（重考政策等）见文末[3]。</li>
+<li>考前、考中和考后的流程与要求见文末[4]。</li>
+</ul>
+<h2 id="折扣与报名"><a href="#折扣与报名" class="headerlink" title="折扣与报名"></a>折扣与报名</h2><ul>
+<li>官方价格150 USD（约1085元），AWS官方提供多种活动获取折扣优惠。此外，通过任何一项认证后能够领取五折优惠券。</li>
+<li>考试方式：线下考试中心或在线监考考试。</li>
+<li>考试语言：推荐选<strong>中文</strong>，因为选了中文之后也可以查看英文考题，反之则不行。</li>
+<li>提前 1 周预约即可，如果需要更改预约时间，在<strong>考试时间至少 24 小时之前</strong>取消或重新预约。</li>
+<li>报考链接见文末[5]。</li>
+</ul>
+<hr>
+<h2 id="题目结构"><a href="#题目结构" class="headerlink" title="题目结构"></a>题目结构</h2><ul>
+<li>一共 <strong>65 道题。</strong></li>
+<li>其中有15道为不计分试题。AWS 收集这些不计分试题的 答题情况以进行评估，以便将来将这些试题作为计分试题。在考试中不会标明不计分试题。</li>
+<li>全部为 <strong>单选 &#x2F; 多选。</strong></li>
+<li>题目比较长，包含场景描述、业务背景、架构限制等。</li>
+</ul>
+<hr>
+<h2 id="考试时间与结果"><a href="#考试时间与结果" class="headerlink" title="考试时间与结果"></a>考试时间与结果</h2><ul>
+<li>考试时长：130 分钟，非英语母语者申请 Exam Accommodations将考试时间延长 30 分钟。</li>
+<li>考试结果换算分数为 100 – 1000 分。最低及格分数为 720 分。</li>
+<li>完成考试后，不会立马在屏幕上看到考试结果。</li>
+<li>未通过考试，需要 14 天后才能重考。重考次数没有限制，但每次重考都必须全额支付报名费。</li>
+</ul>
+<h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><h2 id="官方学习资料——AWS-白皮书"><a href="#官方学习资料——AWS-白皮书" class="headerlink" title="官方学习资料——AWS 白皮书"></a>官方学习资料——AWS 白皮书</h2><p>白皮书提供非常详细的文档支持，大部分疑问都可以得到答案。学会熟练查阅白皮书，从官方文档获取最全面的云产品信息。白皮书链接见文末[6]。</p>
+<h2 id="考点知识大纲"><a href="#考点知识大纲" class="headerlink" title="考点知识大纲"></a>考点知识大纲</h2><p>AWS目前有近百项服务，不过如果想通过AWS的助理级认证，只需要熟悉掌握主要的服务即可。对其他服务只需要明白其使用场景以及一些应用限制。官方提供的大纲更加详细，但是以<strong>设计架构</strong>的角度出发。官方大纲pdf可通过文末[7]获取。</p>
+<p>我的大纲是从学习者角度出发整理的，这里只作为补充参考。一部分内容如机器学习几乎不占比重，不是考试重点，但偶尔也会出现在考题中，你只需要大概知道即可。</p>
+<ol>
+<li>计算服务（Compute）<br> EC2：需掌握启动、配置、安全组、弹性 IP、Auto Scaling<br> Lambda：事件驱动的无服务器计算服务<br> Elastic Beanstalk：自动化部署与管理<br> ECS &#x2F; EKS（容器服务）</li>
+<li>存储服务（Storage）<br> S3：存储桶、存储类别、生命周期管理、版本控制、加密等<br> EBS：卷类型（gp3、io2）、快照、加密<br> EFS：适用于多个 EC2 实例共享访问的文件存储<br> FSx：适用于 Windows 文件服务器或高性能计算（Lustre）</li>
+<li>数据库服务（Database）：<br> RDS：托管版数据库</li>
+</ol>
+<p>Aurora：兼容 MySQL&#x2F;PostgreSQL，比 RDS 更快更贵</p>
+<p>DynamoDB：NoSQL 数据库</p>
+<p>ElastiCache：托管版 Redis 或 Memcached</p>
+<p>Redshift：数据仓库，跑大规模分析 SQL，适合 BI 报表</p>
+<p>Transfer Family：用 SFTP&#x2F;FTP&#x2F;FTPS 把数据安全地迁到 AWS 上</p>
+<p>Snow Family：实体硬件设备，用来物理迁移海量数据进云</p>
+<ol start="4">
+<li>网络（Networking）<br> VPC：包含子网（公有&#x2F;私有）、路由表、安全组（SG）与网络ACL<br> IGW NAT Gateway：分别用于公网访问与私网出站访问<br> Bastion Host：跳板机，用于安全访问私有子网<br> Route 53：DNS 服务<br> CloudFront：CDN 加速服务<br> Direct Connect &#x2F; Transit Gateway</li>
+<li>Serverless 、应用解耦与集成<br> Lambda + API Gateway<br> Kinesis<br> SNS（发布&#x2F;订阅）<br> SQS（消息队列）<br> EventBridge：事件总线，支持跨服务事件驱动架构<br> Step Functions：状态管理 + 工作流编排</li>
+<li>灾难恢复与数据迁移（DR &amp; Migration）<br> 灾难恢复方案<br> 数据迁移工具<br> 备份策略</li>
+<li>安全与权限控制（Security &amp; Identity）<br> IAM：身份与访问管理（用户、组、角色、策略）<br> Organizations &#x2F; SCP：多账户管理与集中策略控制<br> KMS：密钥管理服务（对数据加密解密）<br> CloudTrail &#x2F; Config：操作记录审计与合规性监控<br> CloudWatch：监控服务，含日志、指标、报警、仪表板</li>
+</ol>
+<h2 id="Udemy课程"><a href="#Udemy课程" class="headerlink" title="Udemy课程"></a>Udemy课程</h2><p>Udemy平台Stephane Maarek的《Ultimate AWS Certified Solutions Architect Associate》，官方链接见文末[8]。</p>
+<p>该课程面向初学者，无需了解任何 AWS 知识，提供完整的学习路径，包括：</p>
+<ul>
+<li>完整的模拟考试，包括解释！</li>
+<li>所有 800 多张幻灯片均以可下载的 PDF 形式提供</li>
+<li>实操部分的详细讲解，包括Troubleshooting</li>
+<li>了解 AWS 基础知识：计算服务（EC2&#x2F;Lambda&#x2F;EKS、存储体系（S3&#x2F;EBS&#x2F;EFS）、 网络架构（VPC&#x2F;Route53&#x2F;CloudFront）、数据库服务（RDS&#x2F;DynamoDB&#x2F;ElastiCache）</li>
+<li>解决方案架构：架构设计原则、高性能架构、安全合规、成本优化</li>
+</ul>
+<p>最重要的几个产品讲解得非常细，搭配动手操作。对于云计算小白来说很不错，加深理解，巩固记忆。课程为英文，前期我挂了翻译，我后期基本就不需要翻译也能够看懂。</p>
+<h1 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h1><h2 id="动手实践——理论与实操相结合"><a href="#动手实践——理论与实操相结合" class="headerlink" title="动手实践——理论与实操相结合"></a>动手实践——理论与实操相结合</h2><p>注册 AWS <strong>全球区</strong>账号，绑定信用卡即可激活一年的 Free Tier。免费额度覆盖大部分备考所需资源。</p>
+<p>针对重要服务可以多练手，如EC2，S3，网络部分的服务。例如：</p>
+<ul>
+<li>启动EC2实例、配置安全组、SSH 连接、安装 web server；</li>
+<li>S3： 上传下载对象、设置 bucket policy、版本控制等 ；</li>
+<li>VPC + EC2 + S3 组合</li>
+</ul>
+<h2 id="高效笔记策略——记录与知识内化"><a href="#高效笔记策略——记录与知识内化" class="headerlink" title="高效笔记策略——记录与知识内化"></a>高效笔记策略——记录与知识内化</h2><p>入门阶段，你会被大量缩写词包围，各个云厂商的命名也不尽相同。例如，AWS 把云服务器叫作 EC2（Elastic Compute Cloud），阿里云则叫 ECS（Elastic Compute Service）。</p>
+<p>网上中英文备考笔记俯拾皆是，官方白皮书更是全面，Stephane Maarek课程所提供的PPT干货满满。</p>
+<p>但我仍强烈建议——<strong>用自己的话再写一遍</strong>。把别人的知识先嚼碎，再用自己的逻辑吐出来，记忆最深，理解也最透彻。</p>
+<p>每个人的习惯不同，我习惯抓住几个点进行衍射：</p>
+<h3 id="服务理解"><a href="#服务理解" class="headerlink" title="服务理解"></a>服务理解</h3><ul>
+<li>是什么，有什么用？</li>
+<li>在传统架构中对应什么服务？（这一步只是在初期帮助小白建立云原生的基础认知，后期应建立纯粹的云原生思维就不需要这一步骤了）</li>
+<li>和别的服务如何组合，和其他服务的区别是什么？</li>
+</ul>
+<p>比如<strong>EC2</strong></p>
+<ul>
+<li>是什么：服务器，不过是在云上的服务器，你不需要再关注传统服务器的硬件等问题。</li>
+<li>有什么用：跑网站、跑脚本、部署程序，物理服务器能干的它就能，物理服务器不能干的它也能，而且更加灵活。</li>
+<li>之后再衍生到EC2的细节。</li>
+</ul>
+<h3 id="结构化记录"><a href="#结构化记录" class="headerlink" title="结构化记录"></a>结构化记录</h3><p>阶段性整理笔记，填充到学习大纲中。</p>
+<h3 id="可视化输出"><a href="#可视化输出" class="headerlink" title="可视化输出"></a>可视化输出</h3><p>用一张图理清架构，用一张表分清差异</p>
+<p>等你大致知道每个服务“干啥用”的时候，就要开始想它们<strong>怎么组合</strong>，以及两个相似产品的<strong>差异</strong>。 这里推荐draw.io绘制架构图，它提供了很多厂商的图标，如AWS、Cisco、Azure、Google等。</p>
+<p>当你学习到网络这一部分时：</p>
+<p>怎样做才能实现私有子网的 Internet 访问？</p>
+<p>VPC和Internet之间相互通信可以用什么服务？</p>
+<p>区域到区域、 可用区到可用区、私有到公有间的通信方式？</p>
+<p>这时候，你可以通过架构图来帮助自己理解。</p>
+<p><img src="/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/AWS-%E7%BD%91png.png" title="null"><img src="https://cdn.nlark.com/yuque/0/2025/png/58720042/1752744653217-7fd7970f-3bd9-4e4c-bd8d-233e0d4504ba.png" title="我绘制的网络部分架构图"></p>
+<p>那SG和NACL有什么区别，你可以通过表格来直观感受他们的相似和不同：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>特点 &#x2F; 注意事项</td>
+<td>安全组 (SG)</td>
+<td>网络访问控制列表 (NACL)</td>
+</tr>
+<tr>
+<td>类型</td>
+<td>instance级别防火墙</td>
+<td>subnet级别防火墙</td>
+</tr>
+<tr>
+<td>方向</td>
+<td>可以配置入站和出站规则</td>
+<td><strong>必须</strong>同时配置入站和出站规则</td>
+</tr>
+<tr>
+<td>默认规则</td>
+<td>拒绝所有流量</td>
+<td>允许所有流量</td>
+</tr>
+<tr>
+<td>有状态性</td>
+<td>有状态，自动允许相关回复流量</td>
+<td>无状态，入站和出站流量的状态是分开维护</td>
+</tr>
+<tr>
+<td>数量限制</td>
+<td>一个实例可以关联多个SG</td>
+<td>一个子网只能关联一个NACL</td>
+</tr>
+<tr>
+<td>功能</td>
+<td>简单，易于使用</td>
+<td>较为复杂，可用于更细粒度的控制</td>
+</tr>
+</tbody></table>
+<h2 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h2><p><strong>懂产品 ≠ 会做题</strong>。传统选择题往往是选择正确答案，但AWS-SAA认证中，题干往往是：</p>
+<ul>
+<li>哪个服务在特定场景下最合适？</li>
+<li>哪种方案最安全 &#x2F; 最省钱 &#x2F; 最少运维？</li>
+</ul>
+<p>许多考生常陷入一个认知误区：认为掌握AWS产品功能就等同于具备通过认证考试的能力。实际上，AWS认证考核的是一种更高阶的架构思维。考试设计的深层逻辑：</p>
+<ul>
+<li>场景化决策</li>
+<li>可能没有绝对”正确”的答案，只有针对特定约束条件的”最优解”</li>
+</ul>
+<h3 id="刷题资源"><a href="#刷题资源" class="headerlink" title="刷题资源"></a>刷题资源</h3><p>主要使用 <strong>ExamTopics</strong>，官方目前题量超 1000 题。官方链接见文末[9]。</p>
+<ul>
+<li><strong>优点</strong>：<br>  题目质量接近考试真实难度，命中率高，国内大多数人选择该题库。我实际考试中碰到好几道原题。即使只刷了约 400 题精选题，收获也很大。国内也很容易找到整理好的中英双语版本，包括高频精选题、各种格式的 PDF 或表格，获取成本不高。</li>
+<li><strong>缺点</strong>：<br>  个别题目存在答案争议，站内讨论和 AI 解读也无法统一。好在这类题占比极低，影响不大。</li>
+</ul>
+<p><strong>其他来源</strong><br>Udemy 的Practice Exams ：难度普遍高于真题，我评估后没有采用；</p>
+<p>Whizlabs &#x2F; Tutorial Dojo（TD）： 解释详细，命中率略低于 ExamTopics ；</p>
+<p>Ping-T：日语；</p>
+<h3 id="刷题策略：高效规划你的学习路径"><a href="#刷题策略：高效规划你的学习路径" class="headerlink" title="刷题策略：高效规划你的学习路径"></a>刷题策略：高效规划你的学习路径</h3><p>个人刷题方法：每天 50 题左右，不求多但求精。做完一定会提炼每题的关键考点，错题或我觉得有意义的题进行归档，标注错因与正确思路；把相关知识点再复习一遍。我选择的是最适合自己的方式，也有很多人选择背题备考，速度更快。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/58720042/1753077463133-334e4d8b-3d34-4e65-89f7-106b9cc09867.png" title="当时的做题记录"></p>
+<h3 id="刷题精髓：掌握这些技巧让效率倍增"><a href="#刷题精髓：掌握这些技巧让效率倍增" class="headerlink" title="刷题精髓：掌握这些技巧让效率倍增"></a>刷题精髓：掌握这些技巧让效率倍增</h3><p><strong>使用 AI 辅助学习：</strong><br>当你学完课程开始做题，最开始可能完全看不懂题干。不用担心，这很正常。此时你可以借助AI，让它向你解释。你需要10-20题的适应期来理解出题逻辑。</p>
+<p><strong>适当总结记忆：</strong></p>
+<ul>
+<li><p>EBS 加密 → 想到 <strong>KMS</strong></p>
+</li>
+<li><p>移动&#x2F;网络应用程序身份验证 → 想到 <strong>Cognito</strong> 和 <strong>MFA</strong></p>
+</li>
+<li><p><img src="https://cdn.nlark.com/yuque/0/2025/png/58720042/1753112096433-c0311260-b1ca-4687-9dfb-1df87d8f04f0.png" title="不同服务的延迟时间"></p>
+</li>
+</ul>
+<p><strong>关键词识别技巧：</strong><br>当题目中出现 <strong>“细粒度”</strong> 时，要特别关注：</p>
+<ul>
+<li>是否仅授予特定实体（用户、角色、服务）<strong>最小必要权限</strong></li>
+<li>是否限定权限只作用于<strong>特定资源</strong>，而不是整块服务或整个 bucket</li>
+</ul>
+<h3 id="实例解析：手把手教你做题"><a href="#实例解析：手把手教你做题" class="headerlink" title="实例解析：手把手教你做题"></a>实例解析：手把手教你做题</h3><p>一家公司使用在 Amazon EC2 实例上运行的 RESTful Web 服务应用程序从数千个远程设备收集数据。 EC2 实例接收原始数据，转换原始数据，并将所有数据存储在 Amazon S3存储桶中。远程设备的数量很快将增加到数百万。该公司需要一个<strong>高度可扩展</strong>的解决方案，<strong>最大限度地减少运维开销</strong>。</p>
+<p>解决方案架构师应该采取哪些步骤<strong>组合</strong>来满足这些要求？ （选择两个。）</p>
+<p>A. 使用 AWS Glue 处理 Amazon S3 中的原始数据。</p>
+<p>B. 使用 Amazon Route 53 将流量路由到不同的 EC2 实例。</p>
+<p>C. 添加更多 EC2 实例以适应不断增加的传入数据量。</p>
+<p>D. 将原始数据发送到 Amazon Simple Queue Service (Amazon SQS)。使用 EC2 实例来处理数据。</p>
+<p>E. 使用 Amazon API Gateway 将原始数据发送到 Amazon Kinesis 数据流。配置 Amazon Kinesis Data Firehose 以使用数据流作为源将数据传输到 Amazon S3</p>
+<p>简单来说就是有家公司将 Web 服务部署在 EC2 （云服务器）上，它会接收大量数据，然后做些处理，最后把结果存到 S3（一个对象存储服务），现在数据开始变多。</p>
+<p>等你开始学习课程，你一定会捕捉到题干中很关键的两点：</p>
+<ul>
+<li><strong>高度可扩展， highly scalable,：需要能自动扩容的架构</strong></li>
+<li><strong>减少运维开销：优先选择Serverless（无服务器）方案</strong></li>
+</ul>
+<p>目前业务架构：EC2 接收数据，EC2 处理数据，EC2 存入 S3</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/58720042/1752744723175-04471ffc-e54e-490b-a6f1-3a1c98e45993.png" title="公司当前的业务架构"></p>
+<p>接着我们了解一下选项中的服务：</p>
+<ul>
+<li>AWS Glue ：集成、转换和加载数据的服务。scalable，severless</li>
+<li>Amazon Route 53：DNS 服务，用来解析域名</li>
+<li>Amazon SQS：消息队列服务，缓冲流量、解耦系统。 scalable，severless</li>
+<li>Amazon API Gateway：并将不同的后端服务整合到一个统一的接口中。自动扩容能力，无需关心并发数severless</li>
+<li>Amazon Kinesis：<strong>完全托管</strong>的流数据处理服务。 scalable，severless</li>
+</ul>
+<p>这时候我们需要考虑，如何高效接收海量数据，如何处理这些数据。</p>
+<ul>
+<li><p>B选项：使用 Amazon Route 53 将流量路由到不同的 EC2 实例。</p>
+</li>
+<li><p>Amazon Route 53是 DNS 路由服务，不能直接处理请求或做负载均衡</p>
+</li>
+<li><p>C选项： 添加更多 EC2 实例以适应不断增加的传入数据量。</p>
+</li>
+<li><p>可扩展是可扩展，但搭 Auto Scaling之后，管理大量 EC2 实例会带来高昂的运维成本</p>
+</li>
+<li><p>D选项：将原始数据发送到 Amazon Simple Queue Service (Amazon SQS)。使用 EC2 实例来处理数据。</p>
+</li>
+<li><p>SQS虽然解耦了流量，但仍然要运维 EC2实例</p>
+</li>
+</ul>
+<p>现在我们来看一下选择AE之后，业务架构变成下图：</p>
+<p><img src="/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/question.drawio.png" title="null"><img src="https://cdn.nlark.com/yuque/0/2025/png/58720042/1752744740911-0f5b4518-68d2-4203-ba5e-2856a6dd92c6.png" title="AE选项组合后的业务架构"></p>
+<p>这时候，API Gateway 作为流量入口，<strong>动态应对高并发</strong>；</p>
+<p>Kinesis Data Stream可<strong>动态扩展</strong>应对激增的请求量；</p>
+<p>Firehose 从数据流中读取数据，然后写入 S3，<strong>无需人工干预，全自动交付</strong>；</p>
+<p>S3存储原始数据，AWS Glue处理数据，<strong>完全托管无需运维</strong>。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>以上内容都是我的个人经验分享，不具备权威性，也可能因时间推移而有所滞后，仅供参考。</p>
+<p>最后私心放上Stephane Maarek的几句话：</p>
+<p>当开始学习并使用云服务时，你会遇到一些困难，你会尖叫：</p>
+<p>Nothing is working - “aaaahhhhhh”</p>
+<p>Don’t panic.</p>
+<p>If you still don’t understand it, no worries, this is not a blocker for the course.</p>
+<p>Keep on going, and come back to this concept towards the end.</p>
+<p>这不仅是我入门云原生的起点，更让我切实感受到学习的快乐、魅力，还有一种近乎狂喜的兴奋。希望你也能够获得！</p>
+<p>Happy learning!</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>[1]AWS官网</p>
+<p>aws.amazon.com</p>
+<p>[2]AWS的认证信息</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/certification/?nc2=h_ql_le_tc_c&ams%23interactive-card-vertical%23pattern-data.filter=%257B%2522filters%2522%253A%255B%255D%257D">https://aws.amazon.com/cn/certification/?nc2=h_ql_le_tc_c&amp;ams%23interactive-card-vertical%23pattern-data.filter=%257B%2522filters%2522%253A%255B%255D%257D</a></p>
+<p>[3]AWS认证常见问题（包括重考政策，考试更新频率等）</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/certification/faqs/">https://aws.amazon.com/cn/certification/faqs/</a></p>
+<p>[4]考前、考中和考后的流程与要求</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/certification/policies/">https://aws.amazon.com/cn/certification/policies/</a></p>
+<p>[5]AWS-SAA的报考链接</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/certification/certified-solutions-architect-associate/">https://aws.amazon.com/cn/certification/certified-solutions-architect-associate/</a></p>
+<p>[6]AWS白皮书文档</p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/">https://docs.aws.amazon.com/zh_cn/</a></p>
+<p>[7]官方提供的大纲（链接可直接下载PDF）</p>
+<p><a target="_blank" rel="noopener" href="https://d1.awsstatic.com/zh_CN/training-and-certification/docs-sa-assoc/">https://d1.awsstatic.com/zh_CN/training-and-certification/docs-sa-assoc/</a></p>
+<p>[8]demy平台Stephane Maarek的《Ultimate AWS Certified Solutions Architect Associate》课程链接</p>
+<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/?couponCode=KEEPLEARNING">https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/?couponCode=KEEPLEARNING</a></p>
+<p>[9]examtopics链接</p>
+<p><a target="_blank" rel="noopener" href="https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-associate-saa-c03/">https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-associate-saa-c03/</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://sosocrown.github.io">niki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://sosocrown.github.io/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/">https://sosocrown.github.io/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://sosocrown.github.io" target="_blank">The Fountainhead</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DevOps/">DevOps</a><a class="post-meta__tags" href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>buy me a coffee</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/08/01/AWS-01%E3%80%90%E4%BA%91%E8%AE%A1%E7%AE%97%E5%9F%BA%E7%A1%80%E3%80%91/" title="AWS-01【云计算基础】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-01</div><div class="info-item-2">AWS-01【云计算基础】</div></div><div class="info-2"><div class="info-item-1">云计算基础云计算定义与特点： 云计算是一种基于互联网的计算模型，通过共享的计算资源，提供按需获取、快速交付和灵活扩展的计算服务。它将计算、存储、网络和其他相关技术资源提供给用户，使他们能够在不需拥有实际硬件设备和基础设施的情况下，通过网络访问和使用这些资源。  云计算服务模型： 1.2.1 IaaS（基础设施即服务）： 熟悉 IaaS 提供的基础设施层，如 Amazon EC2 实例，允许用户管理操作系统、应用程序等。   1.2.2 PaaS（平台即服务）： 详细了解 PaaS 模型，如 AWS Elastic Beanstalk，它提供托管的平台，简化应用程序的开发和部署。   1.2.3 SaaS（软件即服务）： 了解 SaaS，如 Amazon S3、Amazon RDS 等，提供现成的软件和服务。    部署模型：云计算的部署模型描述了云服务的基础设施在何处部署以及如何访问。主要有以下四种部署模型：  公共云： 公共云是对外提供服务的云计算基础设施，由云服务提供商管理和维护。多个用户可以共享这些资源，如 AWS、Azure、Google Cloud。 私有云：...</div></div></div></a><a class="pagination-related" href="/2023/08/02/AWS-02%E3%80%90EC2%E3%80%91/" title="AWS-02【EC2】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-02</div><div class="info-item-2">AWS-02【EC2】</div></div><div class="info-2"><div class="info-item-1">EC2elastic compute cloud，弹性计算云 EC2的本质是运行在云中虚拟机上的web服务。EC2 instance的本质是云上的虚拟机 Amazon EC2 提供以下功能：  instance-虚拟计算环境 AMI-实例的预配置模板,也称为 *Amazon 系统映像 实例类型:实例 CPU、内存、存储和网络容量的多种配置 使用密钥对的实例的安全登录信息（AWS 存储公有密钥，您在安全位置存储私有密钥） 实例存储卷临时 Amazon EBS 卷 region AZ 防火墙，让您可以指定协议、端口，以及能够使用安全组到达您的实例的源 IP 范围 用于动态云计算的静态 IPv4 地址，称为弹性 IP 地址 元数据，也称为标签，您可以创建元数据并分配给您的 Amazon EC2 资源 您可以创建的虚拟网络，这些网络与其余 AWS 云在逻辑上隔离，并且您可以选择连接到您自己的网络，也称为 Virtual Private Cloud (VPC)。  EC2购买选项 按需实例 (On-Demand Instances):  特点：...</div></div></div></a><a class="pagination-related" href="/2023/08/03/AWS-03%E3%80%90ELB%E3%80%91/" title="AWS-03【ELB】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-03</div><div class="info-item-2">AWS-03【ELB】</div></div><div class="info-2"><div class="info-item-1">ELB- Elastic Load Balancing ELB类型CLB-Classic Load Balancer优势：价格便宜，容易上手劣势：效果没有NLB&#x2F;ALB好  ALB-Application Load Balancer ALB非常适用于微服务和基于容器的应用程序（例如：Docker和Amazon ECS）  具有端口映射功能，可重定向到ECS中的动态端口  优势：支持基于Host和Path的转发；支持粘性会话；性能比CLB好；支持按比例的流量转发；可编辑安全组  负载均衡算法：默认算法为轮询算法,还可以使用最少未完成请求算法   最少未完成请求”算法，也称为“Least Outstanding Requests”算法。   当一个新请求到达负载均衡器时，它会将新请求分发给当前负载最轻的服务器，以最大程度地平衡负载，从而避免某些服务器过载，而其他服务器却处于空闲状态。   good to know: 固定Fixed hostname (xxx.region.elb.amazonaws.com) The application servers don’t...</div></div></div></a><a class="pagination-related" href="/2023/08/04/AWS-04%E3%80%90S3%E3%80%91/" title="AWS-04【S3】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-04</div><div class="info-item-2">AWS-04【S3】</div></div><div class="info-2"><div class="info-item-1">S3Simple Storage Service   S3是AWS提供的对象存储服务，适用于存储和检索任意类型的数据，如文件、图像、视频等。 S3是高度可扩展、耐用、安全的存储解决方案。  S3 存储桶（Bucket）： 存储桶的名称在整个AWS中必须是全局唯一的。 Amazon S3 允许用户将object（文件）存储在“bucket”（目录）中。 存储桶必须有一个全局唯一的名称。 Buckets are defined at the region level存储桶在区域级别上定义。   🐳 命名约定    不使用大写字母 不使用下划线 长度为3-63个字符 不是IP地址 必须以小写字母或数字开头。  S3...</div></div></div></a><a class="pagination-related" href="/2023/08/05/AWS-05%E3%80%90EBS%E3%80%91/" title="AWS-05【EBS】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-05</div><div class="info-item-2">AWS-05【EBS】</div></div><div class="info-2"><div class="info-item-1">EBS-Elastic block system 一种持久性、高性能的存储解决方案，专为在AWS云环境中运行的EC2实例设计。 EBS...</div></div></div></a><a class="pagination-related" href="/2023/08/06/AWS-06%E3%80%90EFS%E3%80%91/" title="AWS-06【EFS】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-06</div><div class="info-item-2">AWS-06【EFS】</div></div><div class="info-2"><div class="info-item-1">EFS Elastic File System  serverless可以挂在到一个instance上 可以挂载到multi-AZ的不同instance上 EFS 文件系统不能直接跨越多个 AWS  region进行挂载。 扩展到 PB 级数，在添加和删除文件时自动增加和缩减 EFS 基于NFS协议的文件存储服务，是一个分布式的文件系统，允许多个 Amazon EC2 实例同时访问和共享文件。 POSIX 兼容性：Amazon EFS 设计为与 POSIX 文件系统接口兼容，因此你可以将现有的应用程序和工作负载迁移到 EFS 上，而无需进行大量修改。  ➡️ POSIX（Portable Operating System Interface，可移植操作系统接口）是一组操作系统标准，旨在提供一种标准化的编程接口，使不同操作系统上的应用程序能够在不进行太多修改的情况下移植和运行。     Highly available, scalable, expensive (3x gp2), pay per use Use cases: content management, web...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">niki</div><div class="author-info-description">You must learn not to be afraid of the world. Never to be hurt by it as you were in that courtroom.You'll win, because you've chosen the hardest way of fighting for your freedom from the world.</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sosocrown"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/sosocrown" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/zn40489@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.douban.com/" target="_blank" title="Douban"><i class="fab fa-douban" style="color: #007722;"></i></a><a class="social-icon" href="/your_wechat_id" target="_blank" title="WeChat"><i class="fas fa-weixin" style="color: #07c160;"></i></a><a class="social-icon" href="https://www.linkedin.com/in/%E6%80%9D%E8%8B%91-%E5%BC%A0-169101283/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color: #0077b5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">恭喜，进入了一个空虚的数字世界。如果你遇到技术问题，你可能会在这儿找到一些答案，或者完全没有。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%83%85%E5%86%B5"><span class="toc-number">2.</span> <span class="toc-text">个人情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-AWS-SAA-%E8%80%83%E8%AF%95%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">关于 AWS SAA 考试：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.1.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E6%89%A3%E4%B8%8E%E6%8A%A5%E5%90%8D"><span class="toc-number">3.2.</span> <span class="toc-text">折扣与报名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.3.</span> <span class="toc-text">题目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E6%97%B6%E9%97%B4%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="toc-number">3.4.</span> <span class="toc-text">考试时间与结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">学习资源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E2%80%94%E2%80%94AWS-%E7%99%BD%E7%9A%AE%E4%B9%A6"><span class="toc-number">4.1.</span> <span class="toc-text">官方学习资料——AWS 白皮书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9%E7%9F%A5%E8%AF%86%E5%A4%A7%E7%BA%B2"><span class="toc-number">4.2.</span> <span class="toc-text">考点知识大纲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Udemy%E8%AF%BE%E7%A8%8B"><span class="toc-number">4.3.</span> <span class="toc-text">Udemy课程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84"><span class="toc-number">5.</span> <span class="toc-text">学习路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%89%8B%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E6%93%8D%E7%9B%B8%E7%BB%93%E5%90%88"><span class="toc-number">5.1.</span> <span class="toc-text">动手实践——理论与实操相结合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E6%95%88%E7%AC%94%E8%AE%B0%E7%AD%96%E7%95%A5%E2%80%94%E2%80%94%E8%AE%B0%E5%BD%95%E4%B8%8E%E7%9F%A5%E8%AF%86%E5%86%85%E5%8C%96"><span class="toc-number">5.2.</span> <span class="toc-text">高效笔记策略——记录与知识内化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%90%86%E8%A7%A3"><span class="toc-number">5.2.1.</span> <span class="toc-text">服务理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%B0%E5%BD%95"><span class="toc-number">5.2.2.</span> <span class="toc-text">结构化记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">5.2.3.</span> <span class="toc-text">可视化输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E9%A2%98"><span class="toc-number">5.3.</span> <span class="toc-text">刷题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E9%A2%98%E8%B5%84%E6%BA%90"><span class="toc-number">5.3.1.</span> <span class="toc-text">刷题资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E9%A2%98%E7%AD%96%E7%95%A5%EF%BC%9A%E9%AB%98%E6%95%88%E8%A7%84%E5%88%92%E4%BD%A0%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84"><span class="toc-number">5.3.2.</span> <span class="toc-text">刷题策略：高效规划你的学习路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E9%A2%98%E7%B2%BE%E9%AB%93%EF%BC%9A%E6%8E%8C%E6%8F%A1%E8%BF%99%E4%BA%9B%E6%8A%80%E5%B7%A7%E8%AE%A9%E6%95%88%E7%8E%87%E5%80%8D%E5%A2%9E"><span class="toc-number">5.3.3.</span> <span class="toc-text">刷题精髓：掌握这些技巧让效率倍增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%90%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%81%9A%E9%A2%98"><span class="toc-number">5.3.4.</span> <span class="toc-text">实例解析：手把手教你做题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">6.</span> <span class="toc-text">结语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">附录</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/15/K8S-/" title="无标题">无标题</a><time datetime="2025-07-15T09:44:56.574Z" title="发表于 2025-07-15 17:44:56">2025-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/15/AWS-SAA%E8%AE%A4%E8%AF%81%E5%85%A8%E6%94%BB%E7%95%A5/" title="AWS-SAA认证全攻略">AWS-SAA认证全攻略</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/15/K8S-day1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4%E7%9A%84%E7%8E%AF%E5%A2%83/" title="K8S-day1-初始化安装k8s集群的环境">K8S-day1-初始化安装k8s集群的环境</a><time datetime="2025-07-14T16:00:00.000Z" title="发表于 2025-07-15 00:00:00">2025-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/06/WSL/" title="WSL-Windows Subsystem for Linux">WSL-Windows Subsystem for Linux</a><time datetime="2025-05-05T16:00:00.000Z" title="发表于 2025-05-06 00:00:00">2025-05-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/06/a%20glass%20of%20Baileys/" title="a glass of Baileys">a glass of Baileys</a><time datetime="2025-05-05T16:00:00.000Z" title="发表于 2025-05-06 00:00:00">2025-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By niki</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to the <a href="https://sosocrown.github.io//">fountainhead</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索内容..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
